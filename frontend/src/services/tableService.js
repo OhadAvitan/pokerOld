@@ -93,7 +93,14 @@ async function createDemoTables() {
 }
 
 function dealDeckToPlayers(table) {
-    //const
+    var players = new Array(table.numOfPlayers)
+    for (let i = 0; i < players.length; i++) {
+        players[i] = players[i].hand;
+
+    }
+    table = { ...table, players }
+
+    console.log('table', table);
     var loops = table.mode === 'Poker' ? 2 : 4;
     loops = 4;
     for (let i = 0; i < loops; i++) {

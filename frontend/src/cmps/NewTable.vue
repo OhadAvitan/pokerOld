@@ -19,7 +19,7 @@
         <label for="omaha">Omaha</label>
     </section>
 
-    <button @click="tryt">Create Tables</button>
+    <button @click="tryt">Create Table</button>
 </div>
 </template>
 
