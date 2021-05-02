@@ -6,6 +6,10 @@
     <h2>💪😎💪</h2>
     <!-- <img :src="bgImgSrc" class="chipsImg"> -->
     <!-- <img :src="bgImgSrc1" class="chipsImg1"> -->
+    <!-- <div class="card">
+      <p>5</p>
+      <p>Q</p>
+    </div> -->
   </div>
 </template>
 

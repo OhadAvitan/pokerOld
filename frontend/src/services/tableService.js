@@ -1,6 +1,9 @@
 'use strict';
 
 import { httpService } from './httpService.js';
+import deckService from './deckService.js';
+import playerService from './playerService.js';
+import utilsService from './utilsService.js'
 // import playerService from '@/services/playerService.js'
 
 // const card = {id: num: 5 , suit: s}
@@ -27,6 +30,7 @@ async function createDemoTables() {
         deck: {},
         players: [
             { id: 5001, hand: ['2', '4', '5', '5'] },
+            // { id: 5001, hand: cards[{ num: , suit: }, { num: , suit: }, { num: , suit: }, { num: , suit: }] },
             { id: 5002, hand: ['2', '8', '8', '10'] },
             { id: 5003, hand: ['A', 'K', 'A', '7'] }]
     },
@@ -93,19 +97,24 @@ async function createDemoTables() {
 }
 
 function dealDeckToPlayers(table) {
+    table.id = 't' + utilsService.getRandomId()
+    var deck = deckService.getNewDeck()
+    table.deck = deck
+
+    // var demoPlayer = playerService.newPlayer();
+    // console.log(demoPlayer);
+
     var players = new Array(table.numOfPlayers)
     for (let i = 0; i < players.length; i++) {
-        players[i] = players[i].hand;
-
+        players[i] = playerService.newPlayer();
     }
     table = { ...table, players }
 
     console.log('table', table);
-    var loops = table.mode === 'Poker' ? 2 : 4;
-    loops = 4;
+    var loops = table.mode === 'poker' ? 2 : 4;
     for (let i = 0; i < loops; i++) {
-        for (let j = 0; j < table.players; j++) {
-            table.players[j].hand.push(table.deck.shift)
+        for (let j = 0; j < table.players.length; j++) {
+            table.players[j].hand.push(table.deck.shift())
         }
     }
     console.log('table after deal', table);

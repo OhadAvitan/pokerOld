@@ -19,7 +19,7 @@
         <label for="omaha">Omaha</label>
     </section>
 
-    <button @click="tryt">Create Table</button>
+    <button @click="onCreateTable">Create Table</button>
 </div>
 </template>
 
@@ -30,7 +30,7 @@ export default {
     data() {
         return {
             newTableData: {
-                numOfPlayers: 4,
+                numOfPlayers: 1,
                 owner: '',
                 mode: 'poker'
             }
@@ -43,28 +43,16 @@ export default {
             alert('Your name please YOU SON OF A BITCH')
           }else {
             console.log('On Create Table')
-            console.log(this.newTableData)
+            tableService.dealDeckToPlayers(this.newTableData)
           }
         },
-        tryt() {
-            var table = {
-                  numOfPlayers: 4,
-                  owner: 'ohad',
-                  mode: 'omaha'
-            }
-            tableService.dealDeckToPlayers(table)
-
-        }
-        // saveNewTable() {
-        //     tableService.add
-        //     this.newTableData
-            
-        //     this.newTableData{
-        //         numOfPlayers: 4,
-        //         owner: '',
-        //         mode: 'poker'
+        // tryt() {
+        //     var table = {
+        //           numOfPlayers: 4,
+        //           owner: 'ohad',
+        //           mode: 'poker'
         //     }
-
+        //     tableService.dealDeckToPlayers(table)
         // }
     }
 

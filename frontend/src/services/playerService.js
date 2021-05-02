@@ -1,14 +1,23 @@
 'use strict';
 
-import utilsService from '@/services/utilsService.js'
+import utilsService from './utilsService.js'
+
 export default {
     newPlayer
 }
 
-function newPlayer(name) {
+function newPlayer() {
     return {
-        id: utilsService.getRandomId(),
-        name: name,
+        id: 'p' + utilsService.getRandomId(),
+        name: null,
         hand: []
     }
 }
+
+// function newPlayer(name) {
+//     return {
+//         id: utilsService.getRandomId(),
+//         name: name,
+//         hand: []
+//     }
+// }

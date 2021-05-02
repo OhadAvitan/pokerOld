@@ -1,4 +1,4 @@
-'use strict';
+'use strict'
 
 export default {
     getNewDeck
@@ -28,7 +28,7 @@ function shuffleDeck(deck) {
 function createDeck() {
     // const suits = ['C', 'D', 'H', 'S'];
     const suits = ['♣', '♦', '♥', '♠'];
-    const nums = ['A', '2', '3', '4', '5','6', '7', '8', '9','10', 'J', 'Q', 'K'];
+    const nums = ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K'];
     var newDeck = [];
     var card;
     for (var i = 0; i < suits.length; i++) {

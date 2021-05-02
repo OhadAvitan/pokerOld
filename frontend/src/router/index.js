@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Deck from '../views/Deck.vue'
 import Home from '../views/Home.vue'
+import Flop from '../views/Flop.vue'
 import About from '../views/About.vue'
 
 Vue.use(VueRouter)
@@ -18,6 +19,10 @@ const routes = [
   {
     path: '/about',
     component: About
+  },
+  {
+    path: '/game',
+    component: Flop
   }
 ]
 
