@@ -7,6 +7,7 @@
     </div>
     <new-table v-show="isNewTableShown" />
     <active-tables v-show="!isNewTableShown" />
+    <button class="go-flop" @click="goFlop">Go Flop</button>
 </div>
 </template>
 
@@ -29,6 +30,9 @@ export default {
         onActiveTables() {
             this.isNewTableShown = false
             console.log('On Active Tables');
+        },
+        goFlop() {
+            this.$router.push('game')
         }
     },
     components: {

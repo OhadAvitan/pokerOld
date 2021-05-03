@@ -43,7 +43,7 @@ export default {
             alert('Your name please YOU SON OF A BITCH')
           }else {
             console.log('On Create Table')
-            tableService.dealDeckToPlayers(this.newTableData)
+            tableService.setDeckToGame(this.newTableData)
           }
         },
         // tryt() {
@@ -52,7 +52,7 @@ export default {
         //           owner: 'ohad',
         //           mode: 'poker'
         //     }
-        //     tableService.dealDeckToPlayers(table)
+        //     tableService.setDeckToGame(table)
         // }
     }
 

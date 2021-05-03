@@ -18,7 +18,7 @@ export default {
     remove,
     save,
     getEmptyTable,
-    dealDeckToPlayers,
+    setDeckToGame,
     createDemoTables
 }
 
@@ -96,29 +96,57 @@ async function createDemoTables() {
     return tables;
 }
 
-function dealDeckToPlayers(table) {
+function setDeckToGame(table) {
     table.id = 't' + utilsService.getRandomId()
     var deck = deckService.getNewDeck()
     table.deck = deck
 
-    // var demoPlayer = playerService.newPlayer();
-    // console.log(demoPlayer);
-
+    //create a players array
     var players = new Array(table.numOfPlayers)
+    delete table.numOfPlayers
     for (let i = 0; i < players.length; i++) {
         players[i] = playerService.newPlayer();
     }
     table = { ...table, players }
 
-    console.log('table', table);
+    //Deal Deck
     var loops = table.mode === 'poker' ? 2 : 4;
     for (let i = 0; i < loops; i++) {
         for (let j = 0; j < table.players.length; j++) {
             table.players[j].hand.push(table.deck.shift())
         }
     }
-    console.log('table after deal', table);
-    // playerService.newPlayer 
+    const tableReady = prepareFlop(table)
+    delete tableReady.deck
+    console.log('table After EVERYTHING:', tableReady);
+
+    //send to the backend and then to the database
+}
+
+function prepareFlop(table) {
+
+    const flop = []
+    //Burn first card
+    table.deck.shift()
+    //Add 3 cards to flop
+    flop.push(table.deck.shift())
+    flop.push(table.deck.shift())
+    flop.push(table.deck.shift())
+
+    //Burn second card
+    table.deck.shift();
+    //Add 4th card
+    flop.push(table.deck.shift())
+
+    //Burn third card
+    table.deck.shift();
+    //Add 5th card
+    flop.push(table.deck.shift())
+
+    table = { ...table, flop }
+
+    console.log('table with flop:', table);
+    return table
 }
 
 // async function query() {
@@ -129,6 +157,7 @@ function dealDeckToPlayers(table) {
 //     }
 //     return tables;
 // }
+
 function add(table) {
     console.log('orderService: (ADD)')
     return httpService.post(`order/`, table)
