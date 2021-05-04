@@ -31,7 +31,7 @@ if (process.env.NODE_ENV === 'production') {
 
 const tableRoutes = require('./api/table/table.routes')
 
-const {connectSockets} = require('./services/socket.service')
+const { connectSockets } = require('./services/socket.service')
 
 
 // routes
@@ -49,6 +49,6 @@ http.listen(port, () => {
     logger.info('Server is running on port: ' + port)
 })
 
-console.log('I am Here!, am I?')
+console.log('console.log - server.js , backend is RUNNING')
 
 

@@ -61,3 +61,35 @@ button {
   margin: 20px;
   padding: 10px;
 }
+
+.modal {
+  animation: fadeOut 4s;
+}
+
+.content {
+  animation: fadeIn 1s;
+}
+
+@keyframes fadeOut {
+  0% {
+    margin-top: 150px;
+  }
+  80% {
+    opacity: 1;
+  }
+  90% {
+    margin-top: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

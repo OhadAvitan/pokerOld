@@ -21,6 +21,7 @@ const routes = [
     component: About
   },
   {
+    // path: '/game/:id',
     path: '/game',
     component: Flop
   }
